@@ -1,0 +1,20 @@
+#!/bin/sh
+
+git clone https://aur.archlinux.org/paru && cd paru && makepkg -si
+
+reflector -c Russia -c Belarus -c Ukraine -c Finland -c Poland -a 12 -p https -p http --sort rate -l 5 --save /etc/pacman.d/mirrorlist
+
+paru
+
+paru -S xidlehook calibre discord telegram-desktop timeshift picom-git rofi todo-bin lf redshift ncmpcpp mpd mpc ueberzug pamixer qbittorrent prettier shellcheck codespell resolvconf nvidia-prime envycontrol nbfc-linux speedtest-cli tty-clock-git zramd resolvconf wireguard-tools shellcheck code npm nodejs autoconf autoconf-archive pkg-config imlib2 libbsd brillo brave-bin papirus-icon-theme catppuccin-gtk-theme rofi-greenclip rofi-calc xinit-xsession    
+
+git clone https://github.com/resurrecting-open-source-projects/scrot.git && cd scrot && ./autogen.sh && ./configure && make && sudo make install&& cd ..
+
+paru -R brillo
+
+git clone https://github.com/CameronNemo/brillo.git && cd brillo && make && sudo make install.setgid
+
+sudo systemctl enable --now zramd
+systemctl --user enable --now mpd
+npm config set prefix ~/.local
+ 
