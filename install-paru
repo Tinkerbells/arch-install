@@ -6,7 +6,11 @@ reflector -c Russia -c Belarus -c Ukraine -c Finland -c Poland -a 12 -p https -p
 
 paru
 
-paru -S xidlehook calibre discord telegram-desktop timeshift picom-git rofi todo-bin lf redshift ncmpcpp mpd mpc ueberzug pamixer qbittorrent prettier shellcheck codespell resolvconf nvidia-prime envycontrol nbfc-linux speedtest-cli tty-clock-git zramd resolvconf wireguard-tools shellcheck code npm nodejs autoconf autoconf-archive pkg-config imlib2 libbsd brillo brave-bin papirus-icon-theme catppuccin-gtk-theme rofi-greenclip rofi-calc xinit-xsession    
+paru -S xidlehook calibre discord telegram-desktop timeshift picom-git rofi todo-bin lf redshift ncmpcpp mpd mpc ueberzug pamixer qbittorrent prettier shellcheck codespell openresolv nvidia-prime envycontrol nbfc-linux speedtest-cli tty-clock-git zramd resolvconf wireguard-tools shellcheck code npm nodejs autoconf autoconf-archive pkg-config imlib2 libbsd brillo brave-bin papirus-icon-theme catppuccin-gtk-theme rofi-greenclip rofi-calc xinit-xsession    
+
+mkdir ~/Pictures/Screenshots
+
+git clone https://github.com/catppuccin/wallpapers.git ~/Pictures/Wallpapers
 
 git clone https://github.com/resurrecting-open-source-projects/scrot.git && cd scrot && ./autogen.sh && ./configure && make && sudo make install&& cd ..
 
