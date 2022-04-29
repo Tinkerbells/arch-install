@@ -18,6 +18,8 @@ paru -R brillo
 
 git clone https://github.com/CameronNemo/brillo.git && cd brillo && make && sudo make install.setgid
 
+rm -rf brillo scrot
+
 sudo systemctl enable --now zramd
 systemctl --user enable --now mpd
 npm config set prefix ~/.local
