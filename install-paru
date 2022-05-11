@@ -6,7 +6,7 @@ reflector -c Russia -c Belarus -c Ukraine -c Finland -c Poland -a 12 -p https -p
 
 paru
 
-paru -S xidlehook calibre discord telegram-desktop timeshift picom-git rofi todo-bin lf redshift ncmpcpp mpd mpc ueberzug pamixer qbittorrent prettier shellcheck codespell openresolv nvidia-prime envycontrol nbfc-linux speedtest-cli tty-clock-git zramd resolvconf wireguard-tools shellcheck code npm nodejs autoconf autoconf-archive pkg-config imlib2 libbsd brillo papirus-icon-theme catppuccin-gtk-theme rofi-greenclip rofi-calc xinit-xsession devour xclip xsel xdotool bitwarden-rofi neovim brave-bin jackett yt-dlp
+paru -S xidlehook calibre discord telegram-desktop timeshift picom-git rofi todo-bin lf redshift ncmpcpp mpd mpc ueberzug pamixer qbittorrent prettier shellcheck codespell openresolv nvidia-prime envycontrol nbfc-linux speedtest-cli tty-clock-git zramd resolvconf wireguard-tools shellcheck code npm nodejs autoconf autoconf-archive pkg-config imlib2 libbsd brillo papirus-icon-theme catppuccin-gtk-theme rofi-greenclip rofi-calc xinit-xsession devour xclip xsel xdotool bitwarden-rofi neovim brave-bin jackett yt-dlp mpd-notification-git
 
 mkdir ~/Pictures/Screenshots
 
