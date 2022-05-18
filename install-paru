@@ -22,4 +22,5 @@ rm -rf brillo scrot
 
 sudo systemctl enable --now zramd
 systemctl --user enable --now mpd
+systemctl --user enable --now mpd-notification
 npm config set prefix ~/.local
