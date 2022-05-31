@@ -21,6 +21,6 @@ git clone https://github.com/CameronNemo/brillo.git && cd brillo && make && sudo
 rm -rf brillo scrot
 
 sudo systemctl enable --now zramd
-systemctl --user enable --now mpd
-systemctl --user enable --now mpd-notification
+systemctl --user enable pipewire
+systemctl --user enable mpd-notification
 npm config set prefix ~/.local
