@@ -10,7 +10,7 @@ echo "127.0.0.1 localhost" >> /etc/hosts
 echo "::1       localhost" >> /etc/hosts
 echo "127.0.1.1 arch.localdomain arch" >> /etc/hosts
 
-pacman -S grub grub-btrfs efibootmgr networkmanager network-manager-applet dialog wpa_supplicant mtools reflector linux-headers inetutils bluez bluez-utils alsa alsa-utils pipewire pipewire-alsa pipewire-pulse rsync acpi acpi_call sof-firmware acpid nvidia nvidia-utils nvidia-settings xdg-user-dirs xdg-utils xorg wget sxiv man-db man-pages sxhkd stow pavucontrol feh mpv jq btop alacritty dunst curl nemo zathura zathura-pdf-mupdf zip sddm polkit noto-fonts-cjk noto-fonts noto-fonts-emoji ttf-linux-libertine ttf-dejavu
+pacman -S grub grub-btrfs efibootmgr networkmanager network-manager-applet dialog wpa_supplicant mtools reflector linux-headers inetutils bluez bluez-utils alsa alsa-utils pipewire pipewire-alsa pipewire-pulse rsync acpi acpi_call sof-firmware acpid nvidia nvidia-utils nvidia-settings xdg-user-dirs xdg-utils xorg wget sxiv man-db man-pages sxhkd stow pavucontrol feh mpv jq btop alacritty dunst curl nemo zathura zathura-pdf-mupdf zip polkit noto-fonts-cjk noto-fonts noto-fonts-emoji ttf-linux-libertine ttf-dejavu
 
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB #change the directory to /boot/efi is you mounted the EFI partition at /boot/efi
 
@@ -21,7 +21,6 @@ systemctl enable bluetooth
 systemctl enable reflector.timer
 systemctl enable fstrim.timer
 systemctl enable acpid
-systemctl enable sddm
 
 useradd -m -g wheel tinkerbells
 echo tinkerbells:password | chpasswd
