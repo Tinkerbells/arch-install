@@ -1,16 +1,16 @@
 #!/bin/sh
 
-git clone https://aur.archlinux.org/paru-bin && cd paru && makepkg -si
+git clone https://aur.archlinux.org/paru && cd paru && makepkg -si
 
 reflector -c Russia -c Belarus -c Ukraine -c Finland -c Poland -a 12 -p https -p http --sort rate -l 5 --save /etc/pacman.d/mirrorlist
 
 paru
 
-paru -S xidlehook calibre discord telegram-desktop timeshift picom-git rofi lf redshift ncmpcpp mpd mpc ueberzug pamixer qbittorrent shellcheck codespell openresolv envycontrol nbfc-linux speedtest-cli tty-clock-git zramd resolvconf wireguard-tools shellcheck code npm nodejs autoconf autoconf-archive pkg-config imlib2 libbsd brillo papirus-icon-theme catppuccin-gtk-theme rofi-greenclip rofi-calc devour xclip xsel xdotool bitwarden-rofi neovim brave-bin jackett yt-dlp mpd-notification-git poppler atool ly farge xcolor
+paru -S xidlehook calibre discord telegram-desktop timeshift picom-git rofi lf redshift ncmpcpp mpd mpc ueberzug pamixer qbittorrent shellcheck codespell openresolv envycontrol nbfc-linux speedtest-cli tty-clock-git zramd resolvconf wireguard-tools shellcheck code npm nodejs autoconf autoconf-archive pkg-config imlib2 libbsd brillo papirus-icon-theme catppuccin-gtk-theme rofi-greenclip rofi-calc devour xclip xsel xdotool bitwarden-rofi neovim brave-bin jackett yt-dlp mpd-notification-git poppler atool ly farge xcolor bat mullvad-vpn-bin
 
-mkdir ~/Pictures/Screenshots
+mkdir ~/Pictures/screenshots
 
-git clone https://github.com/catppuccin/wallpapers.git ~/Pictures/Wallpapers
+git clone https://github.com/Tinkerbells/wallpapers.git ~/Pictures/wallpapers
 
 git clone https://github.com/resurrecting-open-source-projects/scrot.git && cd scrot && ./autogen.sh && ./configure && make && sudo make install && cd ..
 
@@ -26,3 +26,5 @@ systemctl --user enable pipewire
 systemctl --user enable mpd-notification
 
 npm config set prefix ~/.local
+
+echo "Install is finished!"

@@ -2,7 +2,7 @@
 
 ln -sf /usr/share/zoneinfo/Europe/Moscow /etc/localtime
 hwclock --systohc
-sed -i '178s/.//' /etc/locale.gen
+sed -i "s/#en_US.UTF-8/en_US.UTF-8/" /etc/locale.gen
 locale-gen
 echo "LANG=en_US.UTF-8" >> /etc/locale.conf
 echo "arch" >> /etc/hostname
@@ -22,7 +22,7 @@ systemctl enable reflector.timer
 systemctl enable fstrim.timer
 systemctl enable acpid
 
-useradd -m -g wheel tinkerbells
-echo tinkerbells:password | chpasswd
+useradd -m -g wheel user 
+echo user:password | chpasswd
 echo "%wheel ALL=(ALL:ALL) ALL" >> /etc/sudoers
 printf "\e[1;32mDone! Type exit, umount -R and reboot.\e[0m"
