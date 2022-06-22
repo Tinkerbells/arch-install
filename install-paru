@@ -24,6 +24,7 @@ sudo systemctl enable --now zramd
 sudo systemctl enable ly 
 systemctl --user enable pipewire
 systemctl --user enable mpd-notification
+systemctl --user enable mpd
 
 npm config set prefix ~/.local
 
