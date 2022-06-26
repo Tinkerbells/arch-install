@@ -6,7 +6,7 @@ reflector -c Russia -c Belarus -c Ukraine -c Finland -c Poland -a 12 -p https -p
 
 paru
 
-paru -S xidlehook calibre discord telegram-desktop timeshift picom-git rofi lf redshift ncmpcpp mpd mpc ueberzug pamixer qbittorrent shellcheck codespell openresolv envycontrol nbfc-linux speedtest-cli tty-clock-git zramd resolvconf wireguard-tools shellcheck code npm nodejs autoconf autoconf-archive pkg-config imlib2 libbsd brillo papirus-icon-theme catppuccin-gtk-theme rofi-greenclip rofi-calc devour xclip xsel xdotool bitwarden-rofi neovim brave-bin jackett yt-dlp mpd-notification-git poppler atool ly farge xcolor bat mullvad-vpn-bin
+paru -S xidlehook calibre discord telegram-desktop timeshift picom-git rofi lf redshift ncmpcpp mpd mpc ueberzug pamixer qbittorrent shellcheck codespell openresolv envycontrol nbfc-linux speedtest-cli tty-clock-git zramd resolvconf wireguard-tools shellcheck code npm nodejs autoconf autoconf-archive pkg-config imlib2 libbsd brillo papirus-icon-theme catppuccin-gtk-theme rofi-greenclip rofi-calc devour xclip xsel xdotool bitwarden-rofi neovim brave-bin jackett yt-dlp mpd-notification-git poppler atool ly farge xcolor bat mullvad-vpn-bin auto-cpufreq bc
 
 mkdir ~/Pictures/screenshots
 
@@ -20,7 +20,9 @@ git clone https://github.com/CameronNemo/brillo.git && cd brillo && make && sudo
 
 rm -rf brillo scrot
 
+sudo envycontrol -s integrated
 sudo systemctl enable --now zramd
+sudo systemctl enable auto-cpufreq
 sudo systemctl enable ly 
 systemctl --user enable pipewire
 systemctl --user enable mpd-notification
