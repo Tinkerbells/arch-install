@@ -39,7 +39,7 @@ sudo systemctl enable --now zramd
 sudo systemctl enable auto-cpufreq
 sudo systemctl enable cronie
 sudo systemctl enable ly 
-sudo systemctl enable mpd
+systemctl --user enable mpd
 systemctl --user enable pipewire
 systemctl --user enable mpd-notification
 
