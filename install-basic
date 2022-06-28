@@ -1,5 +1,6 @@
 #!/bin/sh
 
+# Setup locale, time and hosts params
 ln -sf /usr/share/zoneinfo/Europe/Moscow /etc/localtime
 hwclock --systohc
 sed -i "s/#en_US.UTF-8/en_US.UTF-8/" /etc/locale.gen
@@ -10,19 +11,27 @@ echo "127.0.0.1 localhost" >> /etc/hosts
 echo "::1       localhost" >> /etc/hosts
 echo "127.0.1.1 arch.localdomain arch" >> /etc/hosts
 
-pacman -S grub grub-btrfs efibootmgr networkmanager network-manager-applet dialog wpa_supplicant mtools reflector linux-headers inetutils bluez bluez-utils alsa alsa-utils pipewire pipewire-alsa pipewire-pulse rsync acpi acpi_call sof-firmware acpid nvidia nvidia-utils nvidia-settings xdg-user-dirs xdg-utils xorg wget sxiv man-db man-pages sxhkd stow pavucontrol feh mpv jq btop alacritty dunst curl nemo zathura zathura-pdf-mupdf zip polkit noto-fonts-cjk noto-fonts noto-fonts-emoji ttf-linux-libertine ttf-dejavu
+# Install necessary packages
+pacman -S grub grub-btrfs btrfs-progs efibootmgr networkmanager network-manager-applet dialog wpa_supplicant mtools reflector linux-headers inetutils bluez bluez-utils alsa alsa-utils pipewire pipewire-alsa pipewire-pulse rsync acpi acpi_call sof-firmware acpid nvidia nvidia-utils nvidia-settings xdg-user-dirs xdg-utils xorg man-db man-pages polkit
 
-grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB #change the directory to /boot/efi is you mounted the EFI partition at /boot/efi
-
+# Install grub 
+grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB 
 grub-mkconfig -o /boot/grub/grub.cfg
 
+# Enable systemd services
 systemctl enable NetworkManager
 systemctl enable bluetooth
 systemctl enable reflector.timer
 systemctl enable fstrim.timer
 systemctl enable acpid
 
+# Setup user
 useradd -m -g wheel user 
 echo user:password | chpasswd
 echo "%wheel ALL=(ALL:ALL) ALL" >> /etc/sudoers
+
+# Update mkinicpio with btrfs module
+sed -i "7s/MODULES=()/MODULES=(btrfs)/" /etc/mkinitcpio.conf
+mkinicpio -p linux
+
 printf "\e[1;32mDone! Type exit, umount -R and reboot.\e[0m"
