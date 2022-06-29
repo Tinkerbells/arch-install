@@ -26,12 +26,12 @@ git clone https://github.com/CameronNemo/brillo.git && cd brillo && make && sudo
 sudo envycontrol -s integrated 
 
 # Setup conifg files
-sudo cp /configs/auto-cpufreq.conf /etc/  
-sudo cp /configs/30-touchpad.conf /etc/X11/xorg.conf.d/ 
+sudo cp configs/auto-cpufreq.conf /etc/  
+sudo cp configs/30-touchpad.conf /etc/X11/xorg.conf.d/ 
 sudo sed -i "s/#Experimental = false/Experimental = true/" /etc/bluetooth/main.conf # turn on experimnetal for bluetooth battery level
 sudo sed -i "s/#AutoEnable=false/AutoEnable=true/" /etc/bluetooth/main.conf # turn on bluetooth auto enable 
 # Setup udev rules
-sudo cp /udev-rules/* /etc/udev/rules.d/ 
+sudo cp udev-rules/* /etc/udev/rules.d/ 
 sudo udevadm control --reload-rules 
 
 # Enable systemd services
