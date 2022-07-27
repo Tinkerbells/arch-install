@@ -32,6 +32,6 @@ echo "%wheel ALL=(ALL:ALL) ALL" >> /etc/sudoers
 
 # Update mkinicpio with btrfs module
 sed -i "7s/MODULES=()/MODULES=(btrfs)/" /etc/mkinitcpio.conf
-mkinicpio -p linux
+mkinitcpio -p linux
 
 printf "\e[1;32mDone! Type exit, umount -R and reboot.\e[0m"
