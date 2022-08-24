@@ -3,7 +3,7 @@
  "Author": "ZhangYaoSword",
  "EcPollInterval": 1000,
  "ReadWriteWords": false,
- "CriticalTemperature": 75,
+ "CriticalTemperature": 95,
  "FanConfigurations": [
 	{
 	 "ReadRegister": 149,
