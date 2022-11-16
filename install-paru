@@ -11,13 +11,13 @@ sudo sed -i "s/GRUB_TIMEOUT=5/GRUB_TIMEOUT=0/" /etc/default/grub
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 
 # Install all necessary packages
-paru -S xidlehook calibre discord telegram-desktop timeshift lf redshift ncmpcpp mpd mpc mpv ueberzug pamixer qbittorrent shellcheck codespell openresolv envycontrol speedtest-cli tty-clock-git zramd resolvconf wireguard-tools code npm nodejs autoconf autoconf-archive pkg-config imlib2 libbsd brillo devour xclip xsel xdotool brave-bin jackett yt-dlp poppler zip unzip unrar p7zip atool ly farge xcolor bat mullvad-vpn-bin auto-cpufreq bc wget sxiv sxhkd stow pavucontrol feh jq btop alacritty dunst curl nemo zathura zathura-pdf-mupdf noto-fonts-cjk noto-fonts noto-fonts-emoji ttf-linux-libertine ttf-dejavu tstock lazygit zsh zsh-completions flameshot picom-git cmake translate-shell keyd fzf fd beautysh clipnotify clipmenu dmenu-translate xkb-switch-git
+paru -S xidlehook calibre discord telegram-desktop timeshift lf redshift ncmpcpp mpd mpc mpv ueberzug pamixer shellcheck codespell openresolv envycontrol speedtest-cli tty-clock-git zramd resolvconf wireguard-tools code npm nodejs autoconf autoconf-archive pkg-config imlib2 libbsd brillo devour xclip xsel xdotool brave-bin jackett-bin yt-dlp poppler zip unzip unrar p7zip atool ly farge xcolor bat mullvad-vpn-bin auto-cpufreq bc wget sxiv sxhkd stow pavucontrol feh jq btop alacritty dunst curl nemo zathura zathura-pdf-mupdf noto-fonts-cjk noto-fonts noto-fonts-emoji ttf-linux-libertine ttf-dejavu tstock lazygit zsh zsh-completions scrot picom-git cmake translate-shell keyd fzf fd beautysh clipnotify clipmenu xkb-switch-git logo-ls ytfzf mpd-mpris playerctl firefox autorandr ripgrep ninja fmt pass rivalcfg-git postman-bin xdg-user-dir nbfc-linux docker docker-compose stylua qbittorrent-enhanced-nox-git
 
 # Install starship zsh prompt
 curl -sS https://starship.rs/install.sh | sh
 
 # Download wallpapers
-git clone https://github.com/Tinkerbells/wallpapers.git ~/Pictures/Wallpapers
+git clone https://github.com/Tinkerbells/wallpapers.git ~/pictures/wallpapers
 
 # Disable nvidia graphics
 sudo envycontrol -s hybrid
@@ -36,14 +36,12 @@ sudo systemctl enable auto-cpufreq
 sudo systemctl enable cronie
 sudo systemctl enable ly
 systemctl --user enable mpd
+systemctl --user enable mpd-mpris.service
 systemctl --user enable pipewire
-
-# Change npm prefix to local
-npm config set prefix ~/.local
 
 # Remove unnecessary files
 rm -rf paru
 
-mkdir $HOME/Pictures/Screenshots && mkdir $HOME/Projects
+mkdir "$HOME/pictures/screenshots"
 
 printf "\e[1;32mDone!\e[0m"
