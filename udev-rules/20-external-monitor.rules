@@ -1,0 +1,1 @@
+SUBSYSTEM=="drm", ACTION=="change", RUN+="/usr/bin/su goy -c /home/goy/.local/bin/monitor-control"

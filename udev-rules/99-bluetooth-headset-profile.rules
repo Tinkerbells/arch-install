@@ -1,2 +1,0 @@
-ACTION=="add", SUBSYSTEM=="input", ENV{PRODUCT}=="5/54c/cd3/452", RUN+="/usr/bin/su untermensch -c /home/untermensch/.local/bin/headphones-notify"
-ACTION=="add", SUBSYSTEM=="input", ENV{PRODUCT}=="5/0/0/0", RUN+="/usr/bin/su untermensch -c /home/untermensch/.local/bin/earphones-notify"
