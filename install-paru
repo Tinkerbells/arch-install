@@ -11,7 +11,44 @@ sudo sed -i "s/GRUB_TIMEOUT=5/GRUB_TIMEOUT=0/" /etc/default/grub
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 
 # Install all necessary packages
-paru -S xidlehook calibre discord telegram-desktop timeshift lf redshift ncmpcpp mpd mpc mpv ueberzug pamixer shellcheck codespell openresolv envycontrol speedtest-cli tty-clock-git zramd resolvconf wireguard-tools npm nodejs autoconf autoconf-archive pkg-config imlib2 libbsd devour xclip xsel xdotool brave-bin jackett-bin yt-dlp poppler zip unzip unrar p7zip atool farge xcolor bat mullvad-vpn-bin auto-cpufreq bc wget sxiv sxhkd stow pavucontrol feh jq btop alacritty dunst curl nemo zathura zathura-pdf-mupdf noto-fonts-cjk noto-fonts noto-fonts-emoji ttf-linux-libertine ttf-dejavu tstock lazygit zsh zsh-completions scrot picom-git cmake translate-shell keyd fzf fd beautysh clipnotify clipmenu xkb-switch-git logo-ls ytfzf mpd-mpris playerctl firefox autorandr ripgrep ninja fmt pass rivalcfg-git postman-bin xdg-user-dirs nbfc-linux docker docker-compose stylua qbittorrent-enhanced-nox-git brightnessctl gtk2 xinit-xsession sddm sddm
+#
+# Utility tools
+paru -S --noconfirm xclip xsel xdotool fzf jq atool p7zip unzip unrar zip bat ripgrep fd shellcheck codespell translate-shell pass stylua clipnotify
+
+# Fonts
+paru -S --noconfirm ttf-dejavu ttf-linux-libertine noto-fonts noto-fonts-cjk noto-fonts-emoji
+
+# Audio
+paru -S --noconfirm pavucontrol pamixer mpd mpc mpd-mpris playerctl ncmpcpp
+
+# Image and Video
+paru -S --noconfirm sxiv feh ueberzug poppler picom-git redshift farge mpv
+
+# Networking
+paru -S --noconfirm resolvconf openresolv zramd wireguard-tools mullvad-vpn-bin
+
+# System utilities
+paru -S --noconfirm timeshift-bin xidlehook brightnessctl gtk2 xinit-xsession sddm
+
+# Programming
+paru -S --noconfirm autoconf autoconf-archive pkg-config cmake ninja nodejs npm
+
+# File managers
+paru -S --noconfirm lf
+
+# Terminal
+paru -S --noconfirm stow zsh zsh-completions scrot dunst xkb-switch-git logo-ls ytfzf lazygit keyd beautysha zathura zathura-pdf-mupdf tty-clock-git
+
+# Web Browsers
+paru -S --noconfirm brave
+
+# Docker
+paru -S --noconfirm docker docker-compose
+
+# Laptop utilities
+paru -S --noconfirm nbfc-linux
+
+echo "All packages have been installed successfully."
 
 # Install starship zsh prompt
 curl -sS https://starship.rs/install.sh | sh
@@ -19,29 +56,40 @@ curl -sS https://starship.rs/install.sh | sh
 # Download wallpapers
 git clone https://github.com/Tinkerbells/wallpapers.git ~/pictures/wallpapers
 
-# Disable nvidia graphics
-sudo envycontrol -s hybrid
-
 # Setup bluetooth
 sudo sed -i "s/#Experimental = false/Experimental = true/" /etc/bluetooth/main.conf
 sudo sed -i "s/#AutoEnable=false/AutoEnable=true/" /etc/bluetooth/main.conf
 
 # Setup udev rules
-sudo cp udev-rules/* /etc/udev/rules.d/
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+
+sudo cp -r "${SCRIPT_DIR}/udev-rules/." /etc/udev/rules.d/
 sudo udevadm control --reload-rules
+
+XORG_CONF_DIR="/etc/X11/xorg.conf.d"
+
+# check if xorg.conf.d directory exists, create it if it doesn't
+if [ ! -d "$XORG_CONF_DIR" ]; then
+    sudo mkdir -p "$XORG_CONF_DIR"
+fi
+
+# copy all config files from the configs directory to xorg.conf.d directory
+sudo cp -r "${SCRIPT_DIR}/configs/." "$XORG_CONF_DIR"
 
 # Enable systemd services
 sudo systemctl enable --now zramd
 sudo systemctl enable auto-cpufreq
 sudo systemctl enable cronie
-sudo systemctl enable ly
+sudo systemctl enable sddm
 systemctl --user enable mpd
 systemctl --user enable mpd-mpris.service
 systemctl --user enable pipewire
 
-# Remove unnecessary files
-rm -rf paru
+# Remove unnecessary cache files
+rm -rf "${SCRIPT_DIR}"/paru
 
+# create necessary dirs
 mkdir "$HOME/pictures/screenshots"
+mkidr "$HOME/pr"
 
 printf "\e[1;32mDone!\e[0m"
