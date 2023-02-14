@@ -54,7 +54,18 @@ echo "All packages have been installed successfully."
 curl -sS https://starship.rs/install.sh | sh
 
 # Download wallpapers
-git clone https://github.com/Tinkerbells/wallpapers.git ~/pictures/wallpapers
+git clone https://github.com/Tinkerbells/wallpapers.git "$HOME"/pictures/wallpapers
+
+# Download suckless tools
+mkdir "$HOME/suckless"
+git clone https://github.com/Tinkerbells/dwm.git "$HOME"/suckless/
+git clone https://github.com/Tinkerbells/dmenu.git "$HOME"/suckless/
+git clone https://github.com/Tinkerbells/st.git "$HOME"/suckless/
+git clone https://github.com/Tinkerbells/slock.git "$HOME"/suckless/
+
+# Setup dotfiles
+git clone https://github.com/Tinkerbells/dotfiles.git "$HOME"/dotfiles
+./"$HOME/dotfiles/install-dots"
 
 # Setup bluetooth
 sudo sed -i "s/#Experimental = false/Experimental = true/" /etc/bluetooth/main.conf
