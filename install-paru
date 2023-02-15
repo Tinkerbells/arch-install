@@ -62,6 +62,10 @@ git clone https://github.com/Tinkerbells/dwm.git "$HOME"/suckless/
 git clone https://github.com/Tinkerbells/dmenu.git "$HOME"/suckless/
 git clone https://github.com/Tinkerbells/st.git "$HOME"/suckless/
 git clone https://github.com/Tinkerbells/slock.git "$HOME"/suckless/
+cd "$HOME/suckless/dwm" && sudo make clean install
+cd "$HOME/suckless/dmenu" && sudo make clean install
+cd "$HOME/suckless/st" && sudo make clean install
+cd "$HOME/suckless/slock" && sudo make clean install
 
 # Setup dotfiles
 git clone https://github.com/Tinkerbells/dotfiles.git "$HOME"/dotfiles
