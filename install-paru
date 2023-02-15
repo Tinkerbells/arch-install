@@ -40,7 +40,7 @@ paru -S --noconfirm lf
 paru -S --noconfirm stow zsh zsh-completions scrot dunst xkb-switch-git logo-ls ytfzf lazygit keyd beautysha zathura zathura-pdf-mupdf tty-clock-git
 
 # Web Browsers
-paru -S --noconfirm brave
+paru -S --noconfirm brave-bin
 
 # Docker
 paru -S --noconfirm docker docker-compose
