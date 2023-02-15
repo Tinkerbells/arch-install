@@ -58,10 +58,10 @@ git clone https://github.com/Tinkerbells/wallpapers.git "$HOME"/pictures/wallpap
 
 # Download suckless tools
 mkdir "$HOME/suckless"
-git clone https://github.com/Tinkerbells/dwm.git "$HOME"/suckless/
-git clone https://github.com/Tinkerbells/dmenu.git "$HOME"/suckless/
-git clone https://github.com/Tinkerbells/st.git "$HOME"/suckless/
-git clone https://github.com/Tinkerbells/slock.git "$HOME"/suckless/
+git clone https://github.com/Tinkerbells/dwm.git "$HOME"/suckless/dwm
+git clone https://github.com/Tinkerbells/dmenu.git "$HOME"/suckless/dmenu
+git clone https://github.com/Tinkerbells/st.git "$HOME"/suckless/st
+git clone https://github.com/Tinkerbells/slock.git "$HOME"/suckless/slock
 cd "$HOME/suckless/dwm" && sudo make clean install
 cd "$HOME/suckless/dmenu" && sudo make clean install
 cd "$HOME/suckless/st" && sudo make clean install
@@ -69,7 +69,7 @@ cd "$HOME/suckless/slock" && sudo make clean install
 
 # Setup dotfiles
 git clone https://github.com/Tinkerbells/dotfiles.git "$HOME"/dotfiles
-./"$HOME/dotfiles/install-dots"
+."$HOME/dotfiles/install-dots"
 
 # Setup bluetooth
 sudo sed -i "s/#Experimental = false/Experimental = true/" /etc/bluetooth/main.conf
