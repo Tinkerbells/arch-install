@@ -13,7 +13,7 @@ sudo grub-mkconfig -o /boot/grub/grub.cfg
 # Install all necessary packages
 #
 # Utility tools
-paru -S --noconfirm xclip xsel xdotool fzf jq atool p7zip unzip unrar zip bat ripgrep fd shellcheck codespell translate-shell pass stylua clipnotify sxhkd
+paru -S --noconfirm xclip xsel xdotool fzf jq atool p7zip unzip unrar zip bat ripgrep fd shellcheck codespell translate-shell pass stylua clipnotify clipmenu sxhkd
 
 # Fonts
 paru -S --noconfirm ttf-dejavu ttf-linux-libertine noto-fonts noto-fonts-cjk noto-fonts-emoji
