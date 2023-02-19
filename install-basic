@@ -21,14 +21,13 @@ pacman -S  btrfs-progs efibootmgr networkmanager network-manager-applet dialog w
 
 # Install systemd-boot
 bootctl --path=/boot install
-echo "default arch-*
-timeout 0
-" >> /boot/loader/loader.conf
-echo 'title Arch Linux
-linux /vmlinuz-linux
-initrd /initramfs-linux.img
-initrd /amd-ucode.img
-options root=UUID='"$UUID_HERE"' rootflags=subvol=@ rw' >> /boot/loader/entries/arch.conf
+echo "default arch-*" >> /boot/loader/loader.conf
+echo "timeout 0" >> /boot/loader/loader.conf
+echo "title Arch Linux" >> /boot/loader/entries/arch.conf
+echo "linux /vmlinuz-linux" >> /boot/loader/entries/arch.conf
+echo "initrd /initramfs-linux.img" >> /boot/loader/entries/arch.conf
+echo "initrd /amd-ucode.img" >> /boot/loader/entries/arch.conf
+echo "options root=UUID=UUID-HERE rootflags=subvol=@ rw" >> /boot/loader/entries/arch.conf
 
 # Enable systemd services
 systemctl enable NetworkManager
