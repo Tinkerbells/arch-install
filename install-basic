@@ -12,11 +12,23 @@ echo "::1       localhost" >> /etc/hosts
 echo "127.0.1.1 arch.localdomain arch" >> /etc/hosts
 
 # Install necessary packages
-pacman -S grub grub-btrfs btrfs-progs efibootmgr networkmanager network-manager-applet dialog wpa_supplicant mtools reflector linux-headers inetutils bluez bluez-utils alsa alsa-utils pipewire pipewire-alsa pipewire-pulse rsync acpi acpi_call sof-firmware acpid xdg-utils man-db man-pages polkit xorg gd
+pacman -S  btrfs-progs efibootmgr networkmanager network-manager-applet dialog wpa_supplicant mtools reflector linux-headers inetutils bluez bluez-utils alsa alsa-utils pipewire pipewire-alsa pipewire-pulse rsync acpi acpi_call sof-firmware acpid xdg-utils man-db man-pages polkit xorg xorg-xinit gd
 
 # Install grub
-grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
-grub-mkconfig -o /boot/grub/grub.cfg
+# pacman -S grub grub-btrfs
+# grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
+# grub-mkconfig -o /boot/grub/grub.cfg
+
+# Install systemd-boot
+bootctl --path=/boot install
+echo "default arch-*
+timeout 0
+" >> /boot/loader/loader.conf
+echo 'title Arch Linux
+linux /vmlinuz-linux
+initrd /initramfs-linux.img
+initrd /amd-ucode.img
+options root=UUID='"$UUID_HERE"' rootflags=subvol=@ rw' >> /boot/loader/entries/arch.conf
 
 # Enable systemd services
 systemctl enable NetworkManager
