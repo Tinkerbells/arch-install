@@ -28,7 +28,7 @@ paru -S --noconfirm sxiv feh ueberzug poppler picom-git redshift farge mpv
 paru -S --noconfirm resolvconf openresolv zramd wireguard-tools mullvad-vpn-bin
 
 # System utilities
-paru -S --noconfirm timeshift-bin xidlehook brightnessctl gtk2 xinit-xsession sddm
+paru -S --noconfirm timeshift-bin xidlehook brightnessctl gtk2 xinit-xsession
 
 # Programming
 paru -S --noconfirm autoconf autoconf-archive pkg-config cmake ninja nodejs npm
@@ -37,7 +37,7 @@ paru -S --noconfirm autoconf autoconf-archive pkg-config cmake ninja nodejs npm
 paru -S --noconfirm lf
 
 # Terminal
-paru -S --noconfirm stow zsh zsh-completions scrot dunst xkb-switch-git logo-ls ytfzf lazygit keyd beautysha zathura zathura-pdf-mupdf tty-clock-git
+paru -S --noconfirm stow zsh zsh-completions scrot dunst xkb-switch-git logo-ls ytfzf lazygit keyd shfmt zathura zathura-pdf-mupdf tty-clock-git
 
 # Web Browsers
 paru -S --noconfirm brave-bin
@@ -91,11 +91,14 @@ fi
 # copy all config files from the configs directory to xorg.conf.d directory
 sudo cp -r "${SCRIPT_DIR}/configs/." "$XORG_CONF_DIR"
 
+# Docker stuff
+sudo usermod -aG docker $USER
+newgrp docker
+
 # Enable systemd services
 sudo systemctl enable --now zramd
 sudo systemctl enable auto-cpufreq
 sudo systemctl enable cronie
-sudo systemctl enable sddm
 systemctl --user enable mpd
 systemctl --user enable mpd-mpris.service
 systemctl --user enable pipewire
