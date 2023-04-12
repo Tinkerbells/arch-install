@@ -12,22 +12,12 @@ echo "::1       localhost" >>/etc/hosts
 echo "127.0.1.1 arch.localdomain arch" >>/etc/hosts
 
 # Install necessary packages
-pacman -S btrfs-progs efibootmgr networkmanager network-manager-applet dialog wpa_supplicant mtools reflector linux-headers inetutils bluez bluez-utils alsa-utils pipewire pipewire-alsa pipewire-pulse rsync acpi acpi_call sof-firmware acpid xdg-utils man-db man-pages polkit xorg xorg-xinit gd
+pacman -S grub grub-btrfs btrfs-progs efibootmgr networkmanager network-manager-applet dialog wpa_supplicant mtools reflector linux-headers inetutils bluez bluez-utils alsa-utils pipewire pipewire-alsa pipewire-pulse rsync acpi acpi_call sof-firmware acpid xdg-utils man-db man-pages polkit
 
 # Install grub
 # pacman -S grub grub-btrfs
-# grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
-# grub-mkconfig -o /boot/grub/grub.cfg
-
-# Install systemd-boot
-bootctl --path=/boot install
-echo "default arch-*" >>/boot/loader/loader.conf
-echo "timeout 0" >>/boot/loader/loader.conf
-echo "title Arch Linux" >>/boot/loader/entries/arch.conf
-echo "linux /vmlinuz-linux" >>/boot/loader/entries/arch.conf
-echo "initrd /initramfs-linux.img" >>/boot/loader/entries/arch.conf
-echo "initrd /amd-ucode.img" >>/boot/loader/entries/arch.conf
-echo "options root=UUID=UUID-HERE rootflags=subvol=@ rw" >>/boot/loader/entries/arch.conf
+grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
+grub-mkconfig -o /boot/grub/grub.cfg
 
 # Enable systemd services
 systemctl enable NetworkManager
