@@ -45,8 +45,11 @@ paru -S --noconfirm brave-bin
 # Docker
 paru -S --noconfirm docker docker-compose
 
+# Hyprland
+paru -S hyprland waybar-hyprland tofi foot cliphist swww wlsunset
+
 # Laptop utilities
-paru -S --noconfirm nbfc-linux
+# paru -S --noconfirm nbfc-linux
 
 echo "All packages have been installed successfully."
 
@@ -76,20 +79,20 @@ sudo sed -i "s/#Experimental = false/Experimental = true/" /etc/bluetooth/main.c
 sudo sed -i "s/#AutoEnable=false/AutoEnable=true/" /etc/bluetooth/main.conf
 
 # Setup udev rules
-SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+#SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 
-sudo cp -r "${SCRIPT_DIR}/udev-rules/." /etc/udev/rules.d/
-sudo udevadm control --reload-rules
+#sudo cp -r "${SCRIPT_DIR}/udev-rules/." /etc/udev/rules.d/
+#sudo udevadm control --reload-rules
 
-XORG_CONF_DIR="/etc/X11/xorg.conf.d"
+#XORG_CONF_DIR="/etc/X11/xorg.conf.d"
 
 # check if xorg.conf.d directory exists, create it if it doesn't
-if [ ! -d "$XORG_CONF_DIR" ]; then
-    sudo mkdir -p "$XORG_CONF_DIR"
-fi
+# if [ ! -d "$XORG_CONF_DIR" ]; then
+# 	sudo mkdir -p "$XORG_CONF_DIR"
+# fi
 
 # copy all config files from the configs directory to xorg.conf.d directory
-sudo cp -r "${SCRIPT_DIR}/configs/." "$XORG_CONF_DIR"
+# sudo cp -r "${SCRIPT_DIR}/configs/." "$XORG_CONF_DIR"
 
 # Docker stuff
 sudo usermod -aG docker $USER
@@ -97,7 +100,6 @@ newgrp docker
 
 # Enable systemd services
 # sudo systemctl enable --now zramd
-sudo systemctl enable auto-cpufreq
 sudo systemctl enable cronie
 systemctl --user enable mpd
 systemctl --user enable mpd-mpris.service
