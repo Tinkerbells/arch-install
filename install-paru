@@ -25,7 +25,7 @@ paru -S --noconfirm pavucontrol pamixer mpd mpc mpd-mpris playerctl ncmpcpp
 paru -S --noconfirm sxiv feh ueberzug poppler picom-git redshift farge mpv
 
 # Networking
-paru -S --noconfirm resolvconf openresolv zramd wireguard-tools mullvad-vpn-bin
+paru -S --noconfirm resolvconf openresolv wireguard-tools mullvad-vpn-bin
 
 # System utilities
 paru -S --noconfirm timeshift-bin xidlehook brightnessctl gtk2 xinit-xsession
@@ -96,7 +96,7 @@ sudo usermod -aG docker $USER
 newgrp docker
 
 # Enable systemd services
-sudo systemctl enable --now zramd
+# sudo systemctl enable --now zramd
 sudo systemctl enable auto-cpufreq
 sudo systemctl enable cronie
 systemctl --user enable mpd
